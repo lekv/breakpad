@@ -44,8 +44,8 @@ coverity_scan() {
 # Do an in-tree build and make sure tests pass.
 build() {
   ./configure
-  make -j${JOBS} check VERBOSE=1
-  make distclean
+  sudo make -j${JOBS} check VERBOSE=1
+  sudo make distclean
 }
 
 # Do an out-of-tree build and make sure we can create a release tarball.
@@ -58,6 +58,7 @@ build_out_of_tree() {
 }
 
 main() {
+  whoami
   setup_env
   build
   build_out_of_tree
