@@ -58,7 +58,7 @@ build_out_of_tree() {
 }
 
 main() {
-  whoami
+  echo "Running as user $(whoami)"
   setup_env
   build
   build_out_of_tree
