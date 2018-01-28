@@ -44,9 +44,8 @@ coverity_scan() {
 # Do an in-tree build and make sure tests pass.
 build() {
   ./configure
-  make -j${JOBS}
-  sudo make check VERBOSE=1
-  sudo make distclean
+  sudo -E make -j${JOBS} check VERBOSE=1
+  sudo -E make distclean
 }
 
 # Do an out-of-tree build and make sure we can create a release tarball.
@@ -54,7 +53,7 @@ build_out_of_tree() {
   mkdir -p build/native
   pushd build/native >/dev/null
   ../../configure
-  make -j${JOBS} distcheck VERBOSE=1
+  sudo -E make -j${JOBS} distcheck VERBOSE=1
   popd >/dev/null
 }
 
