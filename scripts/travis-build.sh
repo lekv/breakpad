@@ -11,6 +11,8 @@ setup_env() {
   if [ -n "$USE_CXX" ]; then
       export CXX=$USE_CXX
   fi
+  echo "Using CC=$CC version:\n$($CC --version)"
+  echo "Using CXX=$CXX version:\n$($CXX --version)"
   # Use -jN for faster builds. Travis build machines under Docker
   # have a lot of cores, but are memory-limited, so the kernel
   # will OOM if we try to use them all, so use at most 4.
