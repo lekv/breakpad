@@ -67,4 +67,8 @@ main() {
   coverity_scan
 }
 
-main "$@"
+if [[ $(id -u) == 0 ]]; then
+  main "$@"
+else
+  sudo "$0" "$@"
+fi
